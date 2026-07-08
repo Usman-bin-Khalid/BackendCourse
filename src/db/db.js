@@ -6,4 +6,6 @@ async function connectDB() {
    console.log('Connected to MongoDB');
 }
 
+
+
 module.exports = connectDB;
