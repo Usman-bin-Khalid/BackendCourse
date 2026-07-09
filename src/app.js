@@ -35,5 +35,8 @@ app.patch('/notes/:id' , async (req , res) => {
    const id = req.params.id;
    const data = req.body;
    await noteModel.findOneAndUpdate({_id : id});
+   res.status(200).json({
+    message : 'Notes updated successfully',
+   })
 })
 module.exports = app;
