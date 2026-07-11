@@ -10,7 +10,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@imagekit/nodejs": "^7.9.1",
     "express": "^5.2.1",
-    "mongoose": "^8.24.1"
+    "mongoose": "^8.24.1",
+    "multer": "^2.2.0"
   }
 }

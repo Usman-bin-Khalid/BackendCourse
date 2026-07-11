@@ -1,7 +1,13 @@
 const express = require("express");
+const multer = require("multer");
 const noteModel = require("./models/note.model");
 const app = express();
-app.use(express.json())
+app.use(express.json());
+
+
+const upload = multer({
+  storage : multer.memoryStorage(),
+}) 
 
 app.post('/notes' , async (req , res) => {
    const data = req.body;
@@ -29,7 +35,8 @@ app.delete('/notes/:id' , async (req , res) => {
   res.status(200).json({
     message : 'Notes deleted successfully',
   })
-})
+});
+
 
 app.patch('/notes/:id' , async (req , res) => {
    const id = req.params.id;
@@ -38,5 +45,12 @@ app.patch('/notes/:id' , async (req , res) => {
    res.status(200).json({
     message : 'Notes updated successfully',
    })
+})
+
+app.post('/create-post', upload.single('image'), async (req , res) => {
+  console.log(req.body);
+  cosole.log(req.file);
+
+
 })
 module.exports = app;
