@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const noteModel = require("./models/note.model");
+const uploadFile = require("./services/storage.service");
 const app = express();
 app.use(express.json());
 
@@ -50,7 +51,8 @@ app.patch('/notes/:id' , async (req , res) => {
 app.post('/create-post', upload.single('image'), async (req , res) => {
   console.log(req.body);
   cosole.log(req.file);
+  const result = await uploadFile(req.file.buffer);
+});
 
 
-})
 module.exports = app;
