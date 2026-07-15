@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const noteModel = require("./models/note.model");
 const postModel = require("./models/post.model");
+const authRoutes = require("./routes/auth.routes");
 const uploadFile = require("./services/storage.service");
 const app = express();
 app.use(express.json());
@@ -71,7 +72,10 @@ app.get('/posts', async (req , res) => {
       message : 'Post fetched successfully',
       posts : posts,
      })
-})
+});
+
+
+app.use('/api/auth', authRoutes);
 
 
 module.exports = app;
