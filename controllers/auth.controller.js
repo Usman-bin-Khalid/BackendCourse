@@ -12,4 +12,6 @@ async function registerUser (req , res) {
     res.status(201).json({message : 'User Registered Successfully', user, token : token});
 }
 
+// Cookies Storage Aisi storage jahan pe data browser ke andar store hota h, aur wo data browser ke close hone pe bhi wapis aa jata h.
+
 module.exports = {registerUser};
