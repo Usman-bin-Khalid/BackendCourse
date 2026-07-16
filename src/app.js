@@ -3,6 +3,7 @@ const multer = require("multer");
 const noteModel = require("./models/note.model");
 const postModel = require("./models/post.model");
 const authRoutes = require("./routes/auth.routes");
+const postRoutes = require('./routes/post.routes');
 const uploadFile = require("./services/storage.service");
 const cookieParser = require('cookie-parser')
 const app = express();
@@ -78,6 +79,7 @@ app.get('/posts', async (req , res) => {
 
 
 app.use('/api/auth', authRoutes);
+app.use('/api/post', postRoutes);
 
 
 module.exports = app;
