@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const userModel = require('../models/user.model');
 const router = express.Router();
 
 
@@ -11,7 +12,8 @@ router.post('/create' , (req , res) => {
   
   try {
      const decoded = jwt.verify(token , process.env.JWT_SECRET);
-     console.log(decoded);
+     const user = await userModel.findOne({_id : decoded.id})
+     console.log(user);
   } catch (error) {
     return res.status(401).json({
       message : 'Token is invalid'
